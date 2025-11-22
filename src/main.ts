@@ -3,7 +3,6 @@ import { Transport, MicroserviceOptions } from '@nestjs/microservices';
 import { AppModule } from './app.module';
 
 async function bootstrap() {
-  // Crea la aplicación como un Microservicio (TCP Listener)
   const app = await NestFactory.createMicroservice<MicroserviceOptions>(
     AppModule,
     {
