@@ -22,7 +22,12 @@ export class ClientesService {
         // Devolverá null o lanzará una excepción si no se encuentra
         throw new NotFoundException(`Cliente con ID ${clienteId} no encontrado.`);
     }
-
         return cliente;
     }
+
+    async create(data: any) {
+        const nuevoCliente = this.clientesRepository.create(data);
+        return await this.clientesRepository.save(nuevoCliente);
+    }
+
 }

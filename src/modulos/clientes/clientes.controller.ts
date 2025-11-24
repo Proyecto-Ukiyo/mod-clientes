@@ -1,14 +1,18 @@
 import { Controller } from '@nestjs/common';
-import { MessagePattern } from '@nestjs/microservices';
+import { MessagePattern, Payload } from '@nestjs/microservices';
 import { ClientesService } from './clientes.service';
 
 @Controller()
 export class ClientesController {
   constructor(private readonly clientesService: ClientesService) {}
 
-  // Define el patrón de mensaje que este Microservicio reconocerá
   @MessagePattern({ cmd: 'get_cliente' })
-  obtenerDatosCliente(clienteId: string) {
+  obtenerDatosCliente(@Payload() clienteId: string) {
     return this.clientesService.findOne(clienteId);
+  }
+
+  @MessagePattern({ cmd: 'create_cliente' })
+  crearCliente(@Payload() data: any) {
+    return this.clientesService.create(data);
   }
 }
