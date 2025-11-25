@@ -2,6 +2,7 @@ import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ClientesModule } from './modulos/clientes/clientes.module';
 import { Cliente } from './modulos/clientes/entities/cliente.entity';
+import { SeedModule } from './seed/seed.module';
 
 @Module({
   imports: [
@@ -17,6 +18,7 @@ import { Cliente } from './modulos/clientes/entities/cliente.entity';
       autoLoadEntities: true,
     }),
     ClientesModule,
+    SeedModule,
   ],
 })
 export class AppModule {}
